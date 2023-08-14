@@ -8,9 +8,14 @@ import {
   Text,
   FlatList,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const VistaPrincipal = () => {
-  const handleMenuPress = () => {};
+  const navigation = useNavigation();
+
+  const handleMenuPress = () => {
+    navigation.navigate('Opciones');
+  };
   const handleMessagesPress = () => {};
   const handleViewPress = () => {};
   const handleRegister = () => {
@@ -162,6 +167,7 @@ const styles = StyleSheet.create({
   productListHeaderText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'black'
   },
   productRow: {
     flexDirection: 'row',
@@ -175,11 +181,13 @@ const styles = StyleSheet.create({
   productId: {
     flex: 1,
     fontSize: 16,
+    color: 'black',
   },
 
   productName: {
     flex: 3,
     fontSize: 16,
+    color: 'black',
   },
 
   editButton: {
@@ -198,7 +206,7 @@ const styles = StyleSheet.create({
 
   deleteButton: {
     backgroundColor: 'black', // Cambia el color a negro
-    paddingVertical: 4, // ajusta la altura 
+    paddingVertical: 4, // ajusta la altura
     paddingHorizontal: 10, // ajusta la anchura
     borderRadius: 8,
     alignItems: 'center',
@@ -216,7 +224,7 @@ const styles = StyleSheet.create({
     marginTop: 5, // Ajusta este valor para separar los botones del texto central
   },
   listContainer: {
-    marginTop: 50, // Puedes ajustar este valor según tus necesidades
+    marginTop: 80, // Puedes ajustar este valor según tus necesidades
   },
 });
 
