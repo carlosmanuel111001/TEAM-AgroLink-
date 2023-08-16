@@ -13,6 +13,11 @@ const VistaOpcionesAgricultor = () => {
     // Aquí puedes colocar la lógica para cerrar la sesión
     console.log('Cerrar sesión presionado');
   };
+   // Función para manejar el toque en la opción de perfil
+   const handleProfilePress = () => {
+    navigation.navigate('PerfilAgricultor'); // Navega a la pantalla de perfil
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -24,22 +29,23 @@ const VistaOpcionesAgricultor = () => {
         </TouchableOpacity>
         <Text style={styles.headerText}>Opciones</Text>
       </View>
-      <View style={[styles.firstOptionContainer, styles.separator]}>
-  <Image
-    source={require('../assets/perfil.png')}
-    style={styles.optionImage}
-  />
-  <Text style={styles.optionText}>Perfil</Text>
-  <View style={styles.rightOptionContainer}>
-    <TouchableOpacity style={styles.selectButton}>
-      <Image
-        source={require('../assets/perfil.png')}
-        style={styles.selectImage}
-      />
-    </TouchableOpacity>
+      <TouchableOpacity onPress={handleProfilePress}>
+  <View style={[styles.firstOptionContainer, styles.separator]}>
+    <Image
+      source={require('../assets/perfil.png')}
+      style={styles.optionImage}
+    />
+    <Text style={styles.optionText}>Perfil</Text>
+    <View style={styles.rightOptionContainer}>
+      <TouchableOpacity style={styles.selectButton}>
+        <Image
+          source={require('../assets/perfil.png')}
+          style={styles.selectImage}
+        />
+      </TouchableOpacity>
+    </View>
   </View>
-</View>
-
+</TouchableOpacity>
 <View style={[styles.optionContainer, styles.separator]}>
   <Image
     source={require('../assets/gestion.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
@@ -214,6 +220,7 @@ const styles = StyleSheet.create({
     flex: 3,
     fontSize: 16,
     marginLeft: 10,
+    color: 'black',
   },
   rightOptionContainer: {
     flex: 1,
