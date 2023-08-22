@@ -6,6 +6,9 @@ import {useNavigation} from '@react-navigation/native';
 const VistaOpcionesAgricultor = () => {
   const navigation = useNavigation();
 
+  const handleGestionPedidoPress = () => {
+    navigation.navigate('GestionPedido');
+  };
   const handleBackPress = () => {
     navigation.goBack();
   };
@@ -46,21 +49,23 @@ const VistaOpcionesAgricultor = () => {
     </View>
   </View>
 </TouchableOpacity>
-<View style={[styles.optionContainer, styles.separator]}>
-  <Image
-    source={require('../assets/gestion.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-    style={styles.optionImage}
-  />
-  <Text style={styles.optionText}>Gestionar Pedido</Text>
-  <View style={styles.rightOptionContainer}>
-    <TouchableOpacity style={styles.selectButton}>
-      <Image
-        source={require('../assets/gestion.png')}
-        style={styles.selectImage}
-      />
-    </TouchableOpacity>
+<TouchableOpacity onPress={handleGestionPedidoPress}>
+  <View style={[styles.optionContainer, styles.separator]}>
+    <Image
+      source={require('../assets/gestion.png')} 
+      style={styles.optionImage}
+    />
+    <Text style={styles.optionText}>Gestionar Pedido</Text>
+    <View style={styles.rightOptionContainer}>
+      <TouchableOpacity style={styles.selectButton}>
+        <Image
+          source={require('../assets/gestion.png')}
+          style={styles.selectImage}
+        />
+      </TouchableOpacity>
+    </View>
   </View>
-</View>
+  </TouchableOpacity>
 <View style={[styles.optionContainer, styles.separator]}>
   <Image
     source={require('../assets/pago.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente

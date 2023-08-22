@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import VistaPrincipal from './vistaPrincipal';
 import VistaOpcionesAgricultor from './VistaOpcionesAgricultor';
 import PerfilAgricultor from './PerfilAgricultor';
-
+import GestionPedido from './GestionPedido';
 
 const Stack = createStackNavigator();
 
@@ -19,12 +19,21 @@ function AppNavigator() {
         <Stack.Screen
           name="Opciones"
           component={VistaOpcionesAgricultor}
-          options={{headerShown: false}}// Esto oculta el encabezado
+          options={{headerShown: false}} // Esto oculta el encabezado
         />
-         <Stack.Screen name="PerfilAgricultor" component={PerfilAgricultor}options={{headerShown: false}} />
+        <Stack.Screen
+          name="PerfilAgricultor"
+          component={PerfilAgricultor}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GestionPedido"
+          component={GestionPedido}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 export default AppNavigator;
