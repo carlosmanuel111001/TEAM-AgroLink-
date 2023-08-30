@@ -8,6 +8,7 @@ import GestionPago from './GestionPago';
 import DetallesPago from './DetallesPago';
 import DetallePedido from './DetallePedido';
 import CalificacionComentario from './CalificacionComentario';
+import HistorialVentas from './HistorialVentas'
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,11 @@ function AppNavigator() {
         <Stack.Screen
           name="CalificacionComentario"
           component={CalificacionComentario}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HistorialVentas"
+          component={HistorialVentas}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

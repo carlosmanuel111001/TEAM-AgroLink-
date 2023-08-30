@@ -26,6 +26,9 @@ const VistaOpcionesAgricultor = () => {
   const handleCalificacionesComentariosPress = () => {
     navigation.navigate('CalificacionComentario');
   };
+  const handleHistorialVentasPress = () => {
+    navigation.navigate('HistorialVentas');
+};
 
   return (
     <View style={styles.container}>
@@ -107,21 +110,23 @@ const VistaOpcionesAgricultor = () => {
         </View>
       </TouchableOpacity>
 
-      <View style={[styles.optionContainer, styles.separator]}>
+      <TouchableOpacity onPress={handleHistorialVentasPress}>
+  <View style={[styles.optionContainer, styles.separator]}>
+    <Image
+      source={require('../assets/historial.png')}
+      style={styles.optionImage}
+    />
+    <Text style={styles.optionText}>Historial de Ventas</Text>
+    <View style={styles.rightOptionContainer}>
+      <TouchableOpacity style={styles.selectButton}>
         <Image
-          source={require('../assets/historial.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-          style={styles.optionImage}
+          source={require('../assets/historial.png')}
+          style={styles.selectImage}
         />
-        <Text style={styles.optionText}>Historial de Ventas</Text>
-        <View style={styles.rightOptionContainer}>
-          <TouchableOpacity style={styles.selectButton}>
-            <Image
-              source={require('../assets/historial.png')}
-              style={styles.selectImage}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
+      </TouchableOpacity>
+    </View>
+  </View>
+</TouchableOpacity>
 
       {/* Aquí puedes agregar el resto del contenido de la pantalla */}
       <View style={styles.logoutButtonContainer}>
