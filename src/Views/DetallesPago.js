@@ -1,17 +1,23 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 
-const LabeledValue = ({label, value}) => (
-  <View style={styles.row}>
-    <Text style={styles.cardText}>{label}</Text>
-    <View style={styles.line}></View>
-    <Text style={styles.cardValue}>{value}</Text>
-  </View>
-);
+
+
 const DetallesPago = ({route, navigation}) => {
   const {name} = route.params; // Nombre del usuario que pagó
   const amount = 'C$XXX'; // Monto del pago - Reemplaza XXX con el monto real o extraelo de route.params
   const orderId = 'YYY'; // ID del pedido - Reemplaza YYY con el ID real o extraelo de route.params
+
+  const handleAccept = () => {
+    Alert.alert(
+      'Confirmación', // Título del Alert
+      'Pedido confirmado', // Mensaje del Alert
+      [
+        {text: 'OK', onPress: () => navigation.goBack()}, // Al presionar "OK", nos lleva a la pantalla anterior.
+      ],
+      {cancelable: false},
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -83,9 +89,9 @@ const DetallesPago = ({route, navigation}) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.acceptButton} onPress>
-  <Text style={styles.buttonText}>Aceptar</Text>
-</TouchableOpacity>
+      <TouchableOpacity style={styles.acceptButton} onPress={handleAccept}>
+        <Text style={styles.buttonText}>Aceptar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -153,12 +159,6 @@ const styles = StyleSheet.create({
     textAlign: 'center', // Cambio de textAlign a 'left'
     color: 'black',
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-center', // Esto separa la etiqueta del valor
-    marginTop: 10, // Espacio superior para separación
-    marginBottom: 10, // Espacio inferior
-  },
   cardText: {
     fontSize: 16,
     color: '#5DB075', // Color que especificaste
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  
+
   buttonText: {
     color: 'black', // Cambio del color del texto
     fontWeight: 'bold',
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   halfSubCard: {
     width: '48%',
     marginHorizontal: '1%',
-  }, 
+  },
   infoText: {
     fontSize: 18,
     color: 'black',
