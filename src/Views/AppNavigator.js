@@ -5,7 +5,8 @@ import VistaOpcionesAgricultor from './VistaOpcionesAgricultor';
 import PerfilAgricultor from './PerfilAgricultor';
 import GestionPedido from './GestionPedido';
 import GestionPago from './GestionPago';
-import DetallesPago from './DetallesPago'; 
+import DetallesPago from './DetallesPago';
+import DetallePedido from './DetallePedido';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,11 @@ function AppNavigator() {
         <Stack.Screen
           name="DetallesPago"
           component={DetallesPago}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DetallePedido"
+          component={DetallePedido}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

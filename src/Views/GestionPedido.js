@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {
   View,
@@ -6,10 +6,7 @@ import {
   StyleSheet,
   Image,
   FlatList,
-  Modal,
-  Button,
 } from 'react-native';
-
 
 const GestionPedido = ({navigation}) => {
   const handleGestionPedidoPress = () => {
@@ -28,11 +25,10 @@ const GestionPedido = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentData, setCurrentData] = useState(null);
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <TouchableOpacity
       onPress={() => {
-        setCurrentData(item);
-        setModalVisible(true);
+        navigation.navigate('DetallePedido', {currentData: item});
       }}>
       <View style={styles.row}>
         <Text style={styles.cell}>{item.venta}</Text>
@@ -68,23 +64,12 @@ const GestionPedido = ({navigation}) => {
       </View>
       <View style={styles.division} />
       <View style={styles.container}>
-      <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            setModalVisible(!modalVisible);
-          }}>
-          <View style={styles.modalView}>
-            <Text>{currentData?.venta}</Text>
-            <Text>{currentData?.cliente}</Text>
-            <Text>{currentData?.fecha}</Text>
-            <Text>{currentData?.total}</Text>
-            <Button title="Cerrar" onPress={() => setModalVisible(false)} />
-          </View>
-        </Modal>
         <HeaderRow />
-        <FlatList data={DATA} renderItem={renderItem} keyExtractor={item => item.venta} />
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={item => item.venta}
+        />
       </View>
     </View>
   );
@@ -147,23 +132,5 @@ const styles = StyleSheet.create({
     padding: 8,
     color: 'black',
   },
-  // del modal 
-  modalView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-        width: 0,
-        height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-},
 });
 export default GestionPedido;
