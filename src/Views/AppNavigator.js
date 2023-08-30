@@ -8,7 +8,9 @@ import GestionPago from './GestionPago';
 import DetallesPago from './DetallesPago';
 import DetallePedido from './DetallePedido';
 import CalificacionComentario from './CalificacionComentario';
-import HistorialVentas from './HistorialVentas'
+import HistorialVentas from './HistorialVentas';
+import EditarProducto from './EditarProducto';
+import RegistroProducto from './RegistroProducto';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +61,16 @@ function AppNavigator() {
         <Stack.Screen
           name="HistorialVentas"
           component={HistorialVentas}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="EditarProducto"
+          component={EditarProducto}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RegistroProducto"
+          component={RegistroProducto}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

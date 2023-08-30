@@ -19,13 +19,17 @@ const VistaPrincipal = () => {
   const handleMessagesPress = () => {};
   const handleViewPress = () => {};
   const handleRegister = () => {
-    console.log('Botón de registro presionado');
+    navigation.navigate('RegistroProducto');
   };
   const productos = [
     {id: '1', nombre: 'Producto 1'},
     {id: '2', nombre: 'Producto 2'},
     // ... otros productos
   ];
+  const handleEditPress = productoId => {
+    navigation.navigate('EditarProducto', {id: productoId});
+    // Puedes enviar el id del producto como un parámetro si lo necesitas en la siguiente pantalla.
+  };
 
   return (
     <View style={styles.container}>
@@ -81,9 +85,8 @@ const VistaPrincipal = () => {
                 <View style={styles.editDeleteButtonContainer}>
                   <TouchableOpacity
                     style={styles.editButton}
-                    onPress={() => {
-                      /* código para editar */
-                    }}>
+                    onPress={() => handleEditPress(item.id)} // Paso el id del producto
+                  >
                     <Text style={styles.editButtonText}>Editar</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
   productListHeaderText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'black',
   },
   productRow: {
     flexDirection: 'row',
