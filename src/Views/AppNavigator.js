@@ -4,6 +4,8 @@ import VistaPrincipal from './vistaPrincipal';
 import VistaOpcionesAgricultor from './VistaOpcionesAgricultor';
 import PerfilAgricultor from './PerfilAgricultor';
 import GestionPedido from './GestionPedido';
+import GestionPago from './GestionPago';
+import DetallesPago from './DetallesPago'; 
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,16 @@ function AppNavigator() {
         <Stack.Screen
           name="GestionPedido"
           component={GestionPedido}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GestionPago"
+          component={GestionPago}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DetallesPago"
+          component={DetallesPago}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -16,9 +16,12 @@ const VistaOpcionesAgricultor = () => {
     // Aquí puedes colocar la lógica para cerrar la sesión
     console.log('Cerrar sesión presionado');
   };
-   // Función para manejar el toque en la opción de perfil
-   const handleProfilePress = () => {
+  // Función para manejar el toque en la opción de perfil
+  const handleProfilePress = () => {
     navigation.navigate('PerfilAgricultor'); // Navega a la pantalla de perfil
+  };
+  const handleGestionPagoPress = () => {
+    navigation.navigate('GestionPago');
   };
 
   return (
@@ -33,84 +36,86 @@ const VistaOpcionesAgricultor = () => {
         <Text style={styles.headerText}>Opciones</Text>
       </View>
       <TouchableOpacity onPress={handleProfilePress}>
-  <View style={[styles.firstOptionContainer, styles.separator]}>
-    <Image
-      source={require('../assets/perfil.png')}
-      style={styles.optionImage}
-    />
-    <Text style={styles.optionText}>Perfil</Text>
-    <View style={styles.rightOptionContainer}>
-      <TouchableOpacity style={styles.selectButton}>
-        <Image
-          source={require('../assets/perfil.png')}
-          style={styles.selectImage}
-        />
+        <View style={[styles.firstOptionContainer, styles.separator]}>
+          <Image
+            source={require('../assets/perfil.png')}
+            style={styles.optionImage}
+          />
+          <Text style={styles.optionText}>Perfil</Text>
+          <View style={styles.rightOptionContainer}>
+            <TouchableOpacity style={styles.selectButton}>
+              <Image
+                source={require('../assets/perfil.png')}
+                style={styles.selectImage}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
       </TouchableOpacity>
-    </View>
-  </View>
-</TouchableOpacity>
-<TouchableOpacity onPress={handleGestionPedidoPress}>
-  <View style={[styles.optionContainer, styles.separator]}>
-    <Image
-      source={require('../assets/gestion.png')} 
-      style={styles.optionImage}
-    />
-    <Text style={styles.optionText}>Gestionar Pedido</Text>
-    <View style={styles.rightOptionContainer}>
-      <TouchableOpacity style={styles.selectButton}>
-        <Image
-          source={require('../assets/gestion.png')}
-          style={styles.selectImage}
-        />
+      <TouchableOpacity onPress={handleGestionPedidoPress}>
+        <View style={[styles.optionContainer, styles.separator]}>
+          <Image
+            source={require('../assets/gestion.png')}
+            style={styles.optionImage}
+          />
+          <Text style={styles.optionText}>Gestionar Pedido</Text>
+          <View style={styles.rightOptionContainer}>
+            <TouchableOpacity style={styles.selectButton}>
+              <Image
+                source={require('../assets/gestion.png')}
+                style={styles.selectImage}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
       </TouchableOpacity>
-    </View>
-  </View>
-  </TouchableOpacity>
-<View style={[styles.optionContainer, styles.separator]}>
-  <Image
-    source={require('../assets/pago.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-    style={styles.optionImage}
-  />
-  <Text style={styles.optionText}>Gestión de Pago</Text>
-  <View style={styles.rightOptionContainer}>
-    <TouchableOpacity style={styles.selectButton}>
-      <Image
-        source={require('../assets/pago.png')}
-        style={styles.selectImage}
-      />
-    </TouchableOpacity>
-  </View>
-</View>
-<View style={[styles.optionContainer, styles.separator]}>
-  <Image
-    source={require('../assets/calificacion.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-    style={styles.optionImage}
-  />
-  <Text style={styles.optionText}>Calificaciones y Comentarios</Text>
-  <View style={styles.rightOptionContainer}>
-    <TouchableOpacity style={styles.selectButton}>
-      <Image
-        source={require('../assets/calificacion.png')}
-        style={styles.selectImage}
-      />
-    </TouchableOpacity>
-  </View>
-</View>
-<View style={[styles.optionContainer, styles.separator]}>
-  <Image
-    source={require('../assets/historial.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-    style={styles.optionImage}
-  />
-  <Text style={styles.optionText}>Historial de Ventas</Text>
-  <View style={styles.rightOptionContainer}>
-    <TouchableOpacity style={styles.selectButton}>
-      <Image
-        source={require('../assets/historial.png')}
-        style={styles.selectImage}
-      />
-    </TouchableOpacity>
-  </View>
-</View>
+      <TouchableOpacity onPress={handleGestionPagoPress}>
+        <View style={[styles.optionContainer, styles.separator]}>
+          <Image
+            source={require('../assets/pago.png')}
+            style={styles.optionImage}
+          />
+          <Text style={styles.optionText}>Gestión de Pago</Text>
+          <View style={styles.rightOptionContainer}>
+            <TouchableOpacity style={styles.selectButton}>
+              <Image
+                source={require('../assets/pago.png')}
+                style={styles.selectImage}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+      <View style={[styles.optionContainer, styles.separator]}>
+        <Image
+          source={require('../assets/calificacion.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
+          style={styles.optionImage}
+        />
+        <Text style={styles.optionText}>Calificaciones y Comentarios</Text>
+        <View style={styles.rightOptionContainer}>
+          <TouchableOpacity style={styles.selectButton}>
+            <Image
+              source={require('../assets/calificacion.png')}
+              style={styles.selectImage}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={[styles.optionContainer, styles.separator]}>
+        <Image
+          source={require('../assets/historial.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
+          style={styles.optionImage}
+        />
+        <Text style={styles.optionText}>Historial de Ventas</Text>
+        <View style={styles.rightOptionContainer}>
+          <TouchableOpacity style={styles.selectButton}>
+            <Image
+              source={require('../assets/historial.png')}
+              style={styles.selectImage}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
 
       {/* Aquí puedes agregar el resto del contenido de la pantalla */}
       <View style={styles.logoutButtonContainer}>
