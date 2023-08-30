@@ -23,6 +23,9 @@ const VistaOpcionesAgricultor = () => {
   const handleGestionPagoPress = () => {
     navigation.navigate('GestionPago');
   };
+  const handleCalificacionesComentariosPress = () => {
+    navigation.navigate('CalificacionComentario');
+  };
 
   return (
     <View style={styles.container}>
@@ -86,21 +89,24 @@ const VistaOpcionesAgricultor = () => {
           </View>
         </View>
       </TouchableOpacity>
-      <View style={[styles.optionContainer, styles.separator]}>
-        <Image
-          source={require('../assets/calificacion.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
-          style={styles.optionImage}
-        />
-        <Text style={styles.optionText}>Calificaciones y Comentarios</Text>
-        <View style={styles.rightOptionContainer}>
-          <TouchableOpacity style={styles.selectButton}>
-            <Image
-              source={require('../assets/calificacion.png')}
-              style={styles.selectImage}
-            />
-          </TouchableOpacity>
+      <TouchableOpacity onPress={handleCalificacionesComentariosPress}>
+        <View style={[styles.optionContainer, styles.separator]}>
+          <Image
+            source={require('../assets/calificacion.png')}
+            style={styles.optionImage}
+          />
+          <Text style={styles.optionText}>Calificaciones y Comentarios</Text>
+          <View style={styles.rightOptionContainer}>
+            <TouchableOpacity style={styles.selectButton}>
+              <Image
+                source={require('../assets/calificacion.png')}
+                style={styles.selectImage}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
+
       <View style={[styles.optionContainer, styles.separator]}>
         <Image
           source={require('../assets/historial.png')} // Asegúrate de tener esta imagen en la carpeta correspondiente
