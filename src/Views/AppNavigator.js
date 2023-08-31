@@ -14,6 +14,7 @@ import RegistroProducto from './RegistroProducto';
 import Mensaje from './Mensaje';
 import DetalleMensaje from './DetalleMensaje';
 import PantallaRol from './PantallaRol';
+import InicioSesion from './InicioSesion'
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,11 @@ function AppNavigator() {
           name="PantallaRol"
           component={PantallaRol}
           options={{headerShown: false}} // Esto oculta el encabezado
+        />
+        <Stack.Screen
+          name="InicioSesion"
+          component={InicioSesion}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Principal"

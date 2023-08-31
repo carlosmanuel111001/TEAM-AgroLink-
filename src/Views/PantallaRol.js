@@ -8,7 +8,7 @@ const PantallaRol = () => {
   const navigation = useNavigation();
 
   const handleAgricultorPress = () => {
-    navigation.navigate('Principal');
+    navigation.navigate('InicioSesion');
   };
 
   const handleConsumidorPress = () => {
