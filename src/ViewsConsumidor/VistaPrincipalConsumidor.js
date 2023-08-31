@@ -14,8 +14,7 @@ import {
 
 const VistaPrincipalConsumidor = ({navigation}) => {
   const handleMenuPress = () => {
-    console.log('Menu button pressed!');
-    // Aquí puedes agregar la lógica para abrir tu menú
+    navigation.navigate('OpcionesConsumidor');
   };
   const handleMessagePress = () => {
     console.log('Message button pressed!');
