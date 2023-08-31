@@ -2,82 +2,290 @@ import React from 'react';
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Image,
+  FlatList,
+  Dimensions,
+  Alert,
 } from 'react-native';
 
-const VistaPrincipalConsumidor = () => {
+const VistaPrincipalConsumidor = ({navigation}) => {
+  const handleMenuPress = () => {
+    console.log('Menu button pressed!');
+    // Aquí puedes agregar la lógica para abrir tu menú
+  };
+  const handleMessagePress = () => {
+    console.log('Message button pressed!');
+    // Lógica para abrir tus mensajes o notificaciones
+  };
+
+  const handleSearchPress = () => {
+    console.log('Search button pressed!');
+    // Aquí puedes agregar la lógica para realizar la búsqueda
+  };
+  // Simulación de datos (Puedes extender este array para simular más productos)
+  const IMAGES = {
+    sample: require('../assets/productos.png'),
+    // ... otros assets
+  };
+
+  // ...
+
+  const simulatedData = Array(10)
+    .fill(null)
+    .map((_, index) => ({
+      id: index.toString(),
+      image: IMAGES.sample,
+      description: `Descripción del producto ${index + 1}`,
+    }));
+  const groupedData = [];
+  for (let i = 0; i < simulatedData.length; i += 3) {
+    groupedData.push(simulatedData.slice(i, i + 3));
+  }
+  const handleLogOut = () => {
+    Alert.alert(
+      'Confirmación',
+      '¿Estás seguro de que quieres salir?',
+      [
+        {
+          text: 'No',
+          onPress: () => console.log('Cancelado'),
+          style: 'cancel',
+        },
+        {
+          text: 'Sí',
+          onPress: () => {
+            console.log('Salir');
+            // Navega de regreso a la pantalla de inicio de sesión
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'PantallaRol'}], // Asegúrate de usar el nombre correcto de tu pantalla de inicio
+            });
+          },
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.header}>Bienvenido, Consumidor</Text>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={handleMenuPress}>
+          <Image source={require('../assets/menu.png')} style={styles.icon} />
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.optionContainer}
-        onPress={() => {
-          /* Ir a una categoría o pantalla específica */
-        }}>
-        <Text style={styles.optionText}>Buscar Productos</Text>
-      </TouchableOpacity>
+        <Text style={styles.header}>Productos Disponibles</Text>
 
-      <TouchableOpacity
-        style={styles.optionContainer}
-        onPress={() => {
-          /* Ir a una categoría o pantalla específica */
-        }}>
-        <Text style={styles.optionText}>Mis Pedidos</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={handleMessagePress}>
+          <Image
+            source={require('../assets/mensaje.png')}
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      </View>
 
-      <TouchableOpacity
-        style={styles.optionContainer}
-        onPress={() => {
-          /* Ir a una categoría o pantalla específica */
-        }}>
-        <Text style={styles.optionText}>Configuración de la Cuenta</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.optionContainer}
-        onPress={() => {
-          /* Ir a una categoría o pantalla específica */
-        }}>
-        <Text style={styles.optionText}>Contacto y Ayuda</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.optionContainer}
-        onPress={() => {
-          /* Salir de la sesión o de la aplicación */
-        }}>
-        <Text style={styles.optionText}>Cerrar Sesión</Text>
+      <View style={styles.searchCard}>
+        <TextInput style={styles.searchInput} placeholder="Buscar..." />
+        <TouchableOpacity onPress={handleSearchPress}>
+          <Image
+            source={require('../assets/visualizar.png')}
+            style={styles.searchImage}
+          />
+        </TouchableOpacity>
+      </View>
+      {/* Sección "Cerca de ti" */}
+      <Text style={styles.nearbyTitle}>Cerca de ti</Text>
+      <FlatList
+        horizontal
+        data={groupedData}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item: group}) => (
+          <View style={styles.cardGroup}>
+            {group.map(product => (
+              <View key={product.id} style={styles.card}>
+                <Image source={product.image} style={styles.productImage} />
+                <Text style={styles.productDescription}>
+                  {product.description}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      />
+      {/* Sección "De interés" */}
+      <Text style={styles.nearbyTitle}>De Interes</Text>
+      <FlatList
+        horizontal
+        data={groupedData}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item: group}) => (
+          <View style={styles.cardGroup}>
+            {group.map(product => (
+              <View key={product.id} style={styles.card}>
+                <Image source={product.image} style={styles.productImage} />
+                <Text style={styles.productDescription}>
+                  {product.description}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      />
+      <TouchableOpacity onPress={handleLogOut} style={styles.logOutButton}>
+        <Text style={styles.logOutText}>Salir</Text>
       </TouchableOpacity>
     </ScrollView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EAEDED',
     padding: 20,
   },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
   header: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: 'bold',
     color: '#2C3E50',
+    textAlign: 'center',
+    flex: 1,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    marginHorizontal: 10,
+  },
+  menuImage: {
+    width: 30, // ajusta el tamaño según tu necesidad
+    height: 30,
+    marginLeft: 10, // un pequeño margen para separarlo del texto
+  },
+  searchCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 12,
+    marginTop: 20,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    borderColor: '#EAEDED',
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingLeft: 20, // espacio adicional a la izquierda para el texto
+    paddingRight: 10, // espacio adicional a la derecha
+    fontSize: 16, // tamaño de texto un poco más grande
+    color: '#2C3E50', // color del texto
+    backgroundColor: '#F2F3F4', // fondo ligeramente gris para que se destaque
+  },
+  searchImage: {
+    width: 25, // ajustado para no ser demasiado grande
+    height: 25, // ajustado para no ser demasiado grande
+    marginLeft: 10, // un poco de espacio entre el texto y el ícono
+  },
+  nearbyTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: 'black',
+    color: '#2C3E50',
+    marginTop: 25,
+    marginBottom: 15,
+    marginLeft: 10, // Añade más margen si lo consideras necesario
+  },
+  cardsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 20,
+  },
+  card: {
+    width: '30%', // Considerando 3 tarjetas y un poco de espacio entre ellas
+    backgroundColor: 'white',
+    borderRadius: 15,
+    overflow: 'hidden', // Asegura que la imagen no sobrepase los bordes redondeados
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+  },
+  productImage: {
+    width: '100%',
+    height: 100, // Puedes ajustar esto dependiendo de tus necesidades
+    resizeMode: 'cover', // Asegura que la imagen cubra todo el espacio
+  },
+  productDescription: {
+    padding: 5,
+    fontSize: 14,
     textAlign: 'center',
   },
-  optionContainer: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    borderRadius: 10,
-    marginVertical: 10,
+  cardGroup: {
+    flexDirection: 'row',
+    marginBottom: 15, // Añade un espacio entre los grupos de tarjetas
   },
-  optionText: {
-    color: '#fff',
-    fontSize: 20,
+  card: {
+    width: (Dimensions.get('window').width - 60) / 3, // Un poco menos de ancho para dar espacio a los márgenes
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8, // Bordes redondeados
+    marginHorizontal: 5, // Margen horizontal para separar las tarjetas
+
+    // Sombra
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3, // Añade elevación en Android
+
+    // Añade padding para el contenido de la tarjeta
+    padding: 10,
+  },
+  productImage: {
+    width: '100%', // Usa todo el ancho disponible de la tarjeta
+    height: 100, // Altura fija para la imagen, ajústalo como lo necesites
+    borderRadius: 6, // Bordes ligeramente redondeados para la imagen
+  },
+
+  productDescription: {
+    marginTop: 10, // Espacio entre la imagen y la descripción
+    fontSize: 14,
+    color: '#333',
     textAlign: 'center',
+  },
+  logOutButton: {
+    marginTop: 20,
+    marginBottom: 10, // Espacio en la parte inferior
+    alignSelf: 'center',
+  },
+  logOutText: {
+    fontSize: 16,
+    color: '#7B8D93', // Un color tenue para que el botón sea discreto
+    textDecorationLine: 'underline',
   },
 });
 
