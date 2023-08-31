@@ -11,6 +11,8 @@ import CalificacionComentario from './CalificacionComentario';
 import HistorialVentas from './HistorialVentas';
 import EditarProducto from './EditarProducto';
 import RegistroProducto from './RegistroProducto';
+import Mensaje from './Mensaje';
+import DetalleMensaje from './DetalleMensaje';
 
 const Stack = createStackNavigator();
 
@@ -71,6 +73,16 @@ function AppNavigator() {
         <Stack.Screen
           name="RegistroProducto"
           component={RegistroProducto}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Mensaje"
+          component={Mensaje}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DetalleMensaje"
+          component={DetalleMensaje}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

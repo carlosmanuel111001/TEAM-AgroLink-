@@ -16,7 +16,9 @@ const VistaPrincipal = () => {
   const handleMenuPress = () => {
     navigation.navigate('Opciones');
   };
-  const handleMessagesPress = () => {};
+  const handleMessagesPress = () => {
+    navigation.navigate('Mensaje');
+  };
   const handleViewPress = () => {};
   const handleRegister = () => {
     navigation.navigate('RegistroProducto');
