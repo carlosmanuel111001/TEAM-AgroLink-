@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VistaSplashScreen from '../Components/VistaSplashScreen'; // Importa tu pantalla de splash aquí
-import VistaPrincipal from '../Views/VistaPrincipal'; // Importa tu vista principal aquí
+import VistaPrincipal from '../ViewsAgricultor/VistaPrincipal'; // Importa tu vista principal aquí
 
 const VistaSplash = () => {
   const [showSplash, setShowSplash] = useState(true);

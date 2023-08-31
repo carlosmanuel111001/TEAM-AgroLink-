@@ -1,20 +1,21 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import VistaPrincipal from './vistaPrincipal';
-import VistaOpcionesAgricultor from './VistaOpcionesAgricultor';
-import PerfilAgricultor from './PerfilAgricultor';
-import GestionPedido from './GestionPedido';
-import GestionPago from './GestionPago';
-import DetallesPago from './DetallesPago';
-import DetallePedido from './DetallePedido';
-import CalificacionComentario from './CalificacionComentario';
-import HistorialVentas from './HistorialVentas';
-import EditarProducto from './EditarProducto';
-import RegistroProducto from './RegistroProducto';
-import Mensaje from './Mensaje';
-import DetalleMensaje from './DetalleMensaje';
-import PantallaRol from './PantallaRol';
-import InicioSesion from './InicioSesion'
+import VistaPrincipal from '../ViewsAgricultor/vistaPrincipal';
+import VistaOpcionesAgricultor from '../ViewsAgricultor/VistaOpcionesAgricultor';
+import PerfilAgricultor from '../ViewsAgricultor/PerfilAgricultor';
+import GestionPedido from '../ViewsAgricultor/GestionPedido';
+import GestionPago from '../ViewsAgricultor/GestionPago';
+import DetallesPago from '../ViewsAgricultor/DetallesPago';
+import DetallePedido from '../ViewsAgricultor/DetallePedido';
+import CalificacionComentario from '../ViewsAgricultor/CalificacionComentario';
+import HistorialVentas from '../ViewsAgricultor/HistorialVentas';
+import EditarProducto from '../ViewsAgricultor/EditarProducto';
+import RegistroProducto from '../ViewsAgricultor/RegistroProducto';
+import Mensaje from '../ViewsAgricultor/Mensaje';
+import DetalleMensaje from '../ViewsAgricultor/DetalleMensaje';
+import PantallaRol from '../ViewsCompartidas/PantallaRol';
+import InicioSesion from '../ViewsCompartidas/InicioSesion';
+import ConsumidorNavigator from '../Navigation/ConsumidorNavigator';
 
 const Stack = createStackNavigator();
 
@@ -96,6 +97,11 @@ function AppNavigator() {
           name="DetalleMensaje"
           component={DetalleMensaje}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ConsumidorNavigator" // Asigna un nombre a este Navigator anidado
+          component={ConsumidorNavigator} // Define el componente
+          options={{headerShown: false}} // Oculta el encabezado
         />
       </Stack.Navigator>
     </NavigationContainer>

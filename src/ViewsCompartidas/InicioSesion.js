@@ -10,15 +10,23 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-const InicioSesion = () => {
+const InicioSesion = ({route}) => {
+  const userRole = route?.params?.userRole || 'defaultRole'; // Puedes cambiar 'defaultRole' si lo requieres
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    // Aquí tu lógica de inicio de sesión.
-    navigation.navigate('Principal');
+    if (userRole === 'agricultor') {
+      navigation.navigate('Principal');
+    } else if (userRole === 'consumidor') {
+      navigation.navigate('ConsumidorNavigator', {
+        screen: 'VistaPrincipalConsumidor',
+      });
+    } else {
+      console.warn('El valor de userRole no es válido: ', userRole);
+    }
   };
 
   return (

@@ -1,18 +1,18 @@
 // PantallaRol.js
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const PantallaRol = () => {
   const navigation = useNavigation();
 
   const handleAgricultorPress = () => {
-    navigation.navigate('InicioSesion');
+    navigation.navigate('InicioSesion', {userRole: 'agricultor'});
   };
 
   const handleConsumidorPress = () => {
-    // navigation.navigate('VistaConsumidor'); // Modificar según tu flujo
+    navigation.navigate('InicioSesion', {userRole: 'consumidor'});
   };
 
   return (
@@ -20,12 +20,16 @@ const PantallaRol = () => {
       <Text style={styles.title}>¡Bienvenido a AgroApp!</Text>
       <Text style={styles.description}>Elige tu rol para continuar</Text>
 
-      <TouchableOpacity style={styles.choiceBox} onPress={handleAgricultorPress}>
+      <TouchableOpacity
+        style={styles.choiceBox}
+        onPress={handleAgricultorPress}>
         <Image source={require('../assets/emoji.png')} style={styles.icon} />
         <Text style={styles.choiceText}>Agricultor</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.choiceBox} onPress={handleConsumidorPress}>
+      <TouchableOpacity
+        style={styles.choiceBox}
+        onPress={handleConsumidorPress}>
         <Image source={require('../assets/personal.png')} style={styles.icon} />
         <Text style={styles.choiceText}>Consumidor</Text>
       </TouchableOpacity>
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 10,
     alignItems: 'center',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
