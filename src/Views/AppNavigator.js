@@ -13,13 +13,19 @@ import EditarProducto from './EditarProducto';
 import RegistroProducto from './RegistroProducto';
 import Mensaje from './Mensaje';
 import DetalleMensaje from './DetalleMensaje';
+import PantallaRol from './PantallaRol';
 
 const Stack = createStackNavigator();
 
 function AppNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Principal">
+      <Stack.Navigator initialRouteName="Rol">
+        <Stack.Screen
+          name="PantallaRol"
+          component={PantallaRol}
+          options={{headerShown: false}} // Esto oculta el encabezado
+        />
         <Stack.Screen
           name="Principal"
           component={VistaPrincipal}
