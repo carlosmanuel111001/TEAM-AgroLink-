@@ -17,13 +17,15 @@ const VistaPrincipalConsumidor = ({navigation}) => {
     navigation.navigate('OpcionesConsumidor');
   };
   const handleMessagePress = () => {
-    console.log('Message button pressed!');
-    // Lógica para abrir tus mensajes o notificaciones
+    navigation.navigate('MensajeConsumidor'); // Asegúrate de que el nombre aquí coincide con el nombre que le diste en el stack navigator.
   };
 
   const handleSearchPress = () => {
     console.log('Search button pressed!');
     // Aquí puedes agregar la lógica para realizar la búsqueda
+  };
+  const handleCardClick = product => {
+    navigation.navigate('DescripcionProducto', {product}); // Aquí puedes pasar la información del producto a la siguiente pantalla, si lo necesitas.
   };
   // Simulación de datos (Puedes extender este array para simular más productos)
   const IMAGES = {
@@ -105,12 +107,16 @@ const VistaPrincipalConsumidor = ({navigation}) => {
         renderItem={({item: group}) => (
           <View style={styles.cardGroup}>
             {group.map(product => (
-              <View key={product.id} style={styles.card}>
-                <Image source={product.image} style={styles.productImage} />
-                <Text style={styles.productDescription}>
-                  {product.description}
-                </Text>
-              </View>
+              <TouchableOpacity
+                key={product.id}
+                onPress={() => handleCardClick(product)}>
+                <View style={styles.card}>
+                  <Image source={product.image} style={styles.productImage} />
+                  <Text style={styles.productDescription}>
+                    {product.description}
+                  </Text>
+                </View>
+              </TouchableOpacity>
             ))}
           </View>
         )}
@@ -124,12 +130,16 @@ const VistaPrincipalConsumidor = ({navigation}) => {
         renderItem={({item: group}) => (
           <View style={styles.cardGroup}>
             {group.map(product => (
-              <View key={product.id} style={styles.card}>
-                <Image source={product.image} style={styles.productImage} />
-                <Text style={styles.productDescription}>
-                  {product.description}
-                </Text>
-              </View>
+              <TouchableOpacity
+                key={product.id}
+                onPress={() => handleCardClick(product)}>
+                <View style={styles.card}>
+                  <Image source={product.image} style={styles.productImage} />
+                  <Text style={styles.productDescription}>
+                    {product.description}
+                  </Text>
+                </View>
+              </TouchableOpacity>
             ))}
           </View>
         )}

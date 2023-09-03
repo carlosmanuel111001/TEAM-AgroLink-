@@ -4,6 +4,8 @@ import PantallaRol from '../ViewsCompartidas/PantallaRol';
 import InicioSesion from '../ViewsCompartidas/InicioSesion';
 import VistaPrincipalConsumidor from '../ViewsConsumidor/VistaPrincipalConsumidor';
 import OpcionesConsumidor from '../ViewsConsumidor/OpcionesConsumidor';
+import DescripcionProducto from '../ViewsConsumidor/DescripcionProducto'; 
+import MensajeConsumidor from '../ViewsConsumidor/MensajeConsumidor';
 
 const ConsumidorStack = createStackNavigator();
 
@@ -28,6 +30,16 @@ const ConsumidorNavigator = () => {
       <ConsumidorStack.Screen
         name="OpcionesConsumidor"
         component={OpcionesConsumidor}
+        options={{headerShown: false}}
+      />
+      <ConsumidorStack.Screen
+        name="DescripcionProducto"
+        component={DescripcionProducto}
+        options={{headerShown: false}}
+      />
+       <ConsumidorStack.Screen
+        name="MensajeConsumidor"
+        component={MensajeConsumidor}
         options={{headerShown: false}}
       />
       {/* Añade las otras pantallas de consumidor que necesites aquí */}
