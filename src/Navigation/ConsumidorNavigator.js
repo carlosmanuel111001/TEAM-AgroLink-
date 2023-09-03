@@ -6,6 +6,7 @@ import VistaPrincipalConsumidor from '../ViewsConsumidor/VistaPrincipalConsumido
 import OpcionesConsumidor from '../ViewsConsumidor/OpcionesConsumidor';
 import DescripcionProducto from '../ViewsConsumidor/DescripcionProducto'; 
 import MensajeConsumidor from '../ViewsConsumidor/MensajeConsumidor';
+import Pagar from '../ViewsConsumidor/Pagar';
 
 const ConsumidorStack = createStackNavigator();
 
@@ -40,6 +41,11 @@ const ConsumidorNavigator = () => {
        <ConsumidorStack.Screen
         name="MensajeConsumidor"
         component={MensajeConsumidor}
+        options={{headerShown: false}}
+      />
+       <ConsumidorStack.Screen
+        name="Pagar"
+        component={Pagar}
         options={{headerShown: false}}
       />
       {/* Añade las otras pantallas de consumidor que necesites aquí */}

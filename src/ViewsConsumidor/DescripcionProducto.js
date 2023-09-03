@@ -11,6 +11,13 @@ import {
 const DescripcionProducto = ({route, navigation}) => {
   const {product} = route.params;
 
+  const handleBuyPress = () => {
+    navigation.navigate('Pagar', {
+      productName: product.name,
+      productPrice: product.price,
+    });
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -41,7 +48,7 @@ const DescripcionProducto = ({route, navigation}) => {
       </View>
 
       <View style={styles.actionContainer}>
-        <TouchableOpacity style={styles.buyButton}>
+        <TouchableOpacity style={styles.buyButton} onPress={handleBuyPress}>
           <Text style={styles.buyButtonText}>Comprar</Text>
         </TouchableOpacity>
 
