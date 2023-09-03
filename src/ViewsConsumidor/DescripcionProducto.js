@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  handleChatPress,
 } from 'react-native';
 
 const DescripcionProducto = ({route, navigation}) => {
@@ -17,6 +18,11 @@ const DescripcionProducto = ({route, navigation}) => {
       productPrice: product.price,
     });
   };
+    const handleChatPress = () => {
+      navigation.navigate('DetalleMensaje', {
+      });
+    };
+  
 
   return (
     <ScrollView style={styles.container}>
@@ -52,7 +58,9 @@ const DescripcionProducto = ({route, navigation}) => {
           <Text style={styles.buyButtonText}>Comprar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.messageButton}>
+        <TouchableOpacity
+          style={styles.messageButton}
+          onPress={handleChatPress}>
           <Image
             source={require('../assets/mensaje.png')}
             style={styles.messageIcon}
