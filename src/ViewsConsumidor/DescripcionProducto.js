@@ -6,7 +6,6 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  handleChatPress,
 } from 'react-native';
 
 const DescripcionProducto = ({route, navigation}) => {
