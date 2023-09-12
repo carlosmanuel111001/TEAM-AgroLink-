@@ -19,8 +19,8 @@ const VistaOpcionesConsumidor = () => {
   };
 
   const handleGestionPagoPress = () => {
-    navigation.navigate('GestionPago');
-  };
+    navigation.navigate('GestionPagoConsumidor');
+};
 
   const handleCalificacionesComentariosPress = () => {
     navigation.navigate('CalificacionComentario');
