@@ -15,6 +15,7 @@ import Carrito from '../ViewsConsumidor/Carrito';
 import DetalleCarrito from '../ViewsConsumidor/DetalleCarrito';
 import RealizarPago from '../ViewsConsumidor/RealizarPago';
 import CalificacionConsumidor from '../ViewsConsumidor/CalificacionConsumidor';
+import HistorialCompras from '../ViewsConsumidor/HistorialCompras'
 const ConsumidorStack = createStackNavigator();
 
 const ConsumidorNavigator = () => {
@@ -93,6 +94,11 @@ const ConsumidorNavigator = () => {
         <ConsumidorStack.Screen
         name="CalificacionConsumidor"
         component={CalificacionConsumidor}
+        options={{headerShown: false}}
+      />
+      <ConsumidorStack.Screen
+        name="HistorialCompras"
+        component={HistorialCompras}
         options={{headerShown: false}}
       />
       {/* Añade las otras pantallas de consumidor que necesites aquí */}
