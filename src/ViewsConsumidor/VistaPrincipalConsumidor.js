@@ -25,7 +25,10 @@ const VistaPrincipalConsumidor = ({navigation}) => {
     // Aquí puedes agregar la lógica para realizar la búsqueda
   };
   const handleCardClick = product => {
-    navigation.navigate('DescripcionProducto', {product}); // Aquí puedes pasar la información del producto a la siguiente pantalla, si lo necesitas.
+    navigation.navigate('ProductosDelAgricultor', {
+      agricultorId: product.agricultorId,
+      selectedProduct: product,
+    });
   };
   // Simulación de datos (Puedes extender este array para simular más productos)
   const IMAGES = {
@@ -71,6 +74,10 @@ const VistaPrincipalConsumidor = ({navigation}) => {
       {cancelable: false},
     );
   };
+  const handleCartPress = () => {
+    navigation.navigate('CarritoDeCompras');
+  };
+  const cartItemsCount = 5;
 
   return (
     <ScrollView style={styles.container}>
@@ -86,6 +93,18 @@ const VistaPrincipalConsumidor = ({navigation}) => {
             source={require('../assets/mensaje.png')}
             style={styles.icon}
           />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Carrito')}>
+          <Image
+            source={require('../assets/carrito.png')}
+            style={styles.icon}
+          />
+          {cartItemsCount > 0 && (
+            <View style={styles.cartCounter}>
+              <Text style={styles.cartCounterText}>{cartItemsCount}</Text>
+            </View>
+          )}
         </TouchableOpacity>
       </View>
 
@@ -295,6 +314,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#7B8D93', // Un color tenue para que el botón sea discreto
     textDecorationLine: 'underline',
+  },
+  cartCounter: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartCounterText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 

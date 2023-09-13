@@ -8,18 +8,13 @@ import {
   Alert,
 } from 'react-native';
 
-const DetallesPagoConsumidor = ({route, navigation}) => {
+const RealizarPago = ({route, navigation}) => {
   const name = route && route.params ? route.params.name : 'Nombre por defecto';
   const amount = 'C$XXX';
   const orderId = 'YYY';
 
-  const handleConfirm = () => {
-    Alert.alert(
-      'Confirmación',
-      'Pago realizado exitosamente',
-      [{text: 'OK', onPress: () => navigation.goBack()}],
-      {cancelable: false},
-    );
+  const handlePayment = () => {
+    navigation.navigate('Pagar', { productName: 'Nombre del producto', productPrice: 100 });
   };
 
   return (
@@ -32,7 +27,7 @@ const DetallesPagoConsumidor = ({route, navigation}) => {
           />
         </TouchableOpacity>
         <View style={styles.headerTextContainer}>
-          <Text style={styles.headerText}>Has realizado un pago a</Text>
+          <Text style={styles.headerText}>Estas Realizando un pago a</Text>
           <Text style={styles.headerTextName}>{name}</Text>
         </View>
       </View>
@@ -42,7 +37,7 @@ const DetallesPagoConsumidor = ({route, navigation}) => {
           <Text style={styles.cardHeaderText}>Información del Pago</Text>
           <View style={styles.subsection}>
             <View style={[styles.infoCard, styles.halfSubCard]}>
-              <Text style={styles.infoText}>Realizaste un pago a:</Text>
+              <Text style={styles.infoText}>Realizar un pago a:</Text>
               <Text style={styles.infoValue}>{name}</Text>
             </View>
             <View style={[styles.infoCard, styles.halfSubCard]}>
@@ -86,13 +81,12 @@ const DetallesPagoConsumidor = ({route, navigation}) => {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.acceptButton} onPress={handleConfirm}>
-        <Text style={styles.buttonText}>Confirmar</Text>
+      <TouchableOpacity style={styles.acceptButton} onPress={handlePayment}>
+        <Text style={styles.buttonText}>Realizar Pago</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -289,5 +283,4 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
-
-export default DetallesPagoConsumidor;
+export default RealizarPago;

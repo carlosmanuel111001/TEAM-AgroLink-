@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import CheckBox from '@react-native-community/checkbox';
 
 const Pagar = ({route}) => {
-  const {productName, productPrice} = route.params;
+  const { productName, productPrice } = route?.params || {};
   const agricultor = 'Juan Pérez';
   const cuentaAgricultor = '1234 5678 9012 3456';
   const [isSelected, setSelection] = React.useState(false);
