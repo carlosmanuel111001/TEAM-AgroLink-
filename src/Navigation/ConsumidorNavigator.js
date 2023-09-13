@@ -13,7 +13,8 @@ import DetallesPagoConsumidor from '../ViewsConsumidor/DetallesPagoConsumidor';
 import ProductosDelAgricultor from '../ViewsConsumidor/ProductosDelAgricultor';
 import Carrito from '../ViewsConsumidor/Carrito';
 import DetalleCarrito from '../ViewsConsumidor/DetalleCarrito';
-import RealizarPago from '../ViewsConsumidor/RealizarPago'
+import RealizarPago from '../ViewsConsumidor/RealizarPago';
+import CalificacionConsumidor from '../ViewsConsumidor/CalificacionConsumidor';
 const ConsumidorStack = createStackNavigator();
 
 const ConsumidorNavigator = () => {
@@ -87,6 +88,11 @@ const ConsumidorNavigator = () => {
         <ConsumidorStack.Screen
         name="RealizarPago"
         component={RealizarPago}
+        options={{headerShown: false}}
+      />
+        <ConsumidorStack.Screen
+        name="CalificacionConsumidor"
+        component={CalificacionConsumidor}
         options={{headerShown: false}}
       />
       {/* Añade las otras pantallas de consumidor que necesites aquí */}

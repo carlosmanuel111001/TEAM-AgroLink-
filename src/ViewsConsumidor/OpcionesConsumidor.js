@@ -23,7 +23,7 @@ const VistaOpcionesConsumidor = () => {
 };
 
   const handleCalificacionesComentariosPress = () => {
-    navigation.navigate('CalificacionComentario');
+    navigation.navigate('CalificacionConsumidor');
   };
   const handleHistorialComprasPress = () => {
     navigation.navigate('HistorialCompras');
