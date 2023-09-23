@@ -16,6 +16,7 @@ import DetalleMensaje from '../ViewsAgricultor/DetalleMensaje';
 import PantallaRol from '../ViewsCompartidas/PantallaRol';
 import InicioSesion from '../ViewsCompartidas/InicioSesion';
 import ConsumidorNavigator from '../Navigation/ConsumidorNavigator';
+import DatosRegistro from '../ViewsCompartidas/DatosRegistro';
 
 const Stack = createStackNavigator();
 
@@ -101,6 +102,11 @@ function AppNavigator() {
         <Stack.Screen
           name="ConsumidorNavigator" // Asigna un nombre a este Navigator anidado
           component={ConsumidorNavigator} // Define el componente
+          options={{headerShown: false}} // Oculta el encabezado
+        />
+          <Stack.Screen
+          name="DatosRegistro" // Asigna un nombre a este Navigator anidado
+          component={DatosRegistro} // Define el componente
           options={{headerShown: false}} // Oculta el encabezado
         />
       </Stack.Navigator>

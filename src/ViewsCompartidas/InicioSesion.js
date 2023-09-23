@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   ScrollView,
+  goToRegistro,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -27,6 +28,9 @@ const InicioSesion = ({route}) => {
     } else {
       console.warn('El valor de userRole no es válido: ', userRole);
     }
+  };
+  const goToRegistro = () => {
+    navigation.navigate('DatosRegistro');
   };
 
   return (
@@ -84,7 +88,7 @@ const InicioSesion = ({route}) => {
             <TouchableOpacity>
               <Text style={styles.footerLink}>Olvidó su contraseña?</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToRegistro}>
               <Text style={styles.footerLink}>Registrarse</Text>
             </TouchableOpacity>
           </View>

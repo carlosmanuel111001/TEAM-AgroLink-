@@ -9,6 +9,7 @@ import {
   FlatList,
   Modal,
   TextInput,
+  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -39,6 +40,31 @@ const VistaPrincipal = () => {
   const handleEditPress = productoId => {
     navigation.navigate('EditarProducto', {id: productoId});
     // Puedes enviar el id del producto como un parámetro si lo necesitas en la siguiente pantalla.
+  };
+  const handleLogOut = () => {
+    Alert.alert(
+      'Confirmación',
+      '¿Estás seguro de que quieres salir?',
+      [
+        {
+          text: 'No',
+          onPress: () => console.log('Cancelado'),
+          style: 'cancel',
+        },
+        {
+          text: 'Sí',
+          onPress: () => {
+            console.log('Salir');
+            // Navega de regreso a la pantalla de inicio de sesión
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'PantallaRol'}], // Asegúrate de usar el nombre correcto de tu pantalla de inicio
+            });
+          },
+        },
+      ],
+      {cancelable: false},
+    );
   };
 
   return (
@@ -146,6 +172,9 @@ const VistaPrincipal = () => {
             />
           </View>
         </View>
+        <TouchableOpacity onPress={handleLogOut} style={styles.logOutButton}>
+            <Text style={styles.logOutText}>Salir</Text>
+          </TouchableOpacity>
       </View>
     </>
   );
@@ -156,7 +185,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   upperContainer: {
-    flex: 0.4,
+    flex: 0.5,
     backgroundColor: '#5DDCAE',
   },
   lowerContainer: {
@@ -274,19 +303,19 @@ const styles = StyleSheet.create({
   listContainer: {
     marginTop: 80, // Puedes ajustar este valor según tus necesidades
   },
-   // Estilos para el modal
-   modalContainer: {
-    flex: 1, 
-    justifyContent: 'center', 
+  // Estilos para el modal
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)' // fondo semi-transparente
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // fondo semi-transparente
   },
   modalContent: {
     width: 300,
     padding: 20,
     backgroundColor: '#ffffff',
     borderRadius: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -298,28 +327,38 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10
+    marginBottom: 10,
   },
   input: {
-    borderWidth: 1, 
-    marginTop: 10, 
+    borderWidth: 1,
+    marginTop: 10,
     padding: 5,
     borderColor: '#e0e0e0',
-    borderRadius: 5
+    borderRadius: 5,
   },
   searchButton: {
     backgroundColor: '#5DDCAE',
     marginTop: 15,
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cancelButton: {
-    backgroundColor: '#F76D57', 
+    backgroundColor: '#F76D57',
     marginTop: 10,
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  logOutButton: {
+    marginTop: 20,
+    marginBottom: 10, // Espacio en la parte inferior
+    alignSelf: 'center',
+  },
+  logOutText: {
+    fontSize: 16,
+    color: '#7B8D93', // Un color tenue para que el botón sea discreto
+    textDecorationLine: 'underline',
   },
 });
 

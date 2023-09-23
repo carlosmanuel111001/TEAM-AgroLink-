@@ -28,7 +28,7 @@ const DescripcionProducto = ({route, navigation}) => {
     cart.push(product); // Agrega el producto al carrito.
     alert('Producto agregado al carrito!');
     navigation.goBack(); // Regresa a la pantalla anterior.
-};
+  };
 
   return (
     <ScrollView
@@ -68,7 +68,11 @@ const DescripcionProducto = ({route, navigation}) => {
         <TouchableOpacity
           style={styles.addToCartButton}
           onPress={handleAddToCart}>
-          <Text style={styles.addToCartText}>Agregar al Carrito</Text>
+          <Image
+            source={require('../assets/carrito.png')}
+            style={styles.cartIcon}
+          />
+          <Text style={styles.buttonText}>Agregar al Carrito</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.messageButton}
@@ -77,6 +81,7 @@ const DescripcionProducto = ({route, navigation}) => {
             source={require('../assets/mensaje.png')}
             style={styles.messageIcon}
           />
+          <Text style={styles.buttonText}>Mensaje</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -87,15 +92,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF', // Fondo blanco para una apariencia más limpia.
-    padding: 20,
+    padding: 10,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 15,
   },
   backButton: {
-    marginRight: 20,
+    marginRight: 15,
   },
   backIcon: {
     width: 24,
@@ -103,22 +108,22 @@ const styles = StyleSheet.create({
     tintColor: '#212121', // Ícono oscuro para contraste.
   },
   headerTitle: {
-    fontSize: 24, // Más grande para darle protagonismo.
+    fontSize: 22, // Más grande para darle protagonismo.
     fontWeight: '700', // Más bold para destacar.
     color: '#212121',
   },
   productImage: {
     width: '100%',
-    height: 250,
+    height: 220,
     resizeMode: 'cover',
-    borderRadius: 10,
-    marginBottom: 20,
+    borderRadius: 8,
+    marginBottom: 15,
   },
   detailsContainer: {
     backgroundColor: '#F5F5F5', // Un gris claro para distinguir la sección.
-    borderRadius: 10,
-    padding: 20,
-    marginBottom: 20, // Añado margen para separarlo del contenedor de botones.
+    borderRadius: 8,
+    padding: 15,
+    marginBottom: 15, // Añado margen para separarlo del contenedor de botones.
   },
   productName: {
     fontSize: 24,
@@ -153,33 +158,56 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 15,
+    marginBottom: 15,
   },
   addToCartButton: {
-    backgroundColor: '#3498DB', // Azul para la acción principal.
+    flexDirection: 'row', // Alineación horizontal para el ícono y el texto
+    alignItems: 'center', // Centrado vertical
+    backgroundColor: '#3498DB',
     borderRadius: 25,
-    paddingHorizontal: 25,
-    paddingVertical: 15,
-    width: '48%', // Aproximadamente la mitad de la pantalla, dejando espacio para el margen.
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+    width: '48%',
+    elevation: 5, // Efecto de sombra para Android
+    shadowOffset: {width: 1, height: 2}, // Sombras para iOS
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   addToCartText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '600',
-    textAlign: 'center',
+    marginLeft: 10, // Añadido un pequeño margen a la izquierda para separar el texto del ícono
+  },
+  cartIcon: {
+    width: 24,
+    height: 24,
+    tintColor: 'white',
   },
   messageButton: {
-    backgroundColor: '#F5F5F5', // Igual que el contenedor de detalles.
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#DFFFD6',
     borderRadius: 25,
-    padding: 15,
-    width: '48%', // Aproximadamente la mitad de la pantalla, dejando espacio para el margen.
+    padding: 12,
+    width: '48%',
+    elevation: 5,
+    shadowOffset: {width: 1, height: 2},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   messageIcon: {
-    width: 28,
-    height: 28,
-    tintColor: '#3498DB', // A juego con el botón de agregar al carrito.
-    alignSelf: 'center', // Para que esté centrado en el botón.
+    width: 24,
+    height: 24,
+    tintColor: '#3498DB',
+    marginRight: 10, // Añadido un pequeño margen a la derecha para separar el ícono del texto
+  },
+  buttonText: {
+    color: '#000000',
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: 10,  // Añadido un pequeño margen a la izquierda para separar el texto del ícono
   },
 });
 
